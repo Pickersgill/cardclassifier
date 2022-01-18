@@ -37,5 +37,34 @@ text* may be expanded to an occurence (bag of words) vector.
 - Remove all hint text from cards, usually contained in ()
 
 
+#Next Steps
+- build the Markov model
+- building generative model: fairly simple.
+- fit a HMM based on corpus, hard.
+- must account for:
+    + sink words, words which do not occur in the training set, we should reserve a small volume of
+      "probability mass" for transitioning to a sink word from ANYWHERE. The probability of moving from
+      a sinkword to any other word is? (uniform?, based on term frequency?)
+- must tokenize accounting for some special cases:
+    + symbols {R} {G} {B} {U} {W} {T}
+
+- many new cards are guaranteed to have novel words; their own names. This obudence of words which appear
+    exactly once (hapaxes) may be a problem, could *replace* instances of a cards own name with a meta-token?
+
+- So the questions I have now are:
+    + How to actually go about fitting the model using a "perfect" dataset?
+    + Transitioning from sink words to known words isn't too bad, but how to determine good value for
+        transitioning to an unseen word?
+    + How to handle high "Hapax" volume, is name:meta-token replacement valid?
+
+
+
+
+
+
+
+
+
+
 
 
