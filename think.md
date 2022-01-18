@@ -58,7 +58,16 @@ text* may be expanded to an occurence (bag of words) vector.
     + How to handle high "Hapax" volume, is name:meta-token replacement valid?
 
 
+# Tokenizer:
 
+- The tokenizer is actually made a bit easy (I hope) by the regularity of the corpus. The world-class framing
+    of card text means there a very few unexpected characters, and the history of mtg digitization means there
+    are already clear de facto standards for encoding symbols as strings ({T} is the tap symbol, {B} blue mana
+    etc.)
+
+- I also added {START}, {END} and {THIS} meta tokens. {THIS} refers to the card name to which a text body
+    belongs. Having these been in the same format as the symbols may have been a mistake but it will be easy
+    to change if it does become an issue.
 
 
 
