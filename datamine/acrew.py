@@ -72,6 +72,7 @@ for key in keys:
                 black = "B" in colours
                 white = "W" in colours
                 blue = "U" in colours
+                text = "" if "text" not in d.keys() else d["text"]
         
                 #print("Name: %s\nFirst Printing: %s\nR: %s\nG: %s\nB: %s\nW: %s\nU: %s" % \
                 #    (name, printing[1], red, green, black, white, blue))
@@ -82,12 +83,13 @@ for key in keys:
                     "g" : int(green),
                     "b" : int(black),
                     "w" : int(white),
-                    "u" : int(blue)
+                    "u" : int(blue),
+                    "text" : text
                 })
             else:
                 print("Row ignored")
 
 
-dataframe = pd.DataFrame(rows, columns=["name", "printed", "r", "g", "b", "w", "u"])
+dataframe = pd.DataFrame(rows, columns=["name", "printed", "r", "g", "b", "w", "u", "text"])
 dataframe.to_csv("sanitized_cards.csv", sep="|")
 
