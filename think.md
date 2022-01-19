@@ -23,18 +23,11 @@ might be interesting.
 
 
 #TODO
-- Get dataset
-Card Table:
-|Card Name|Initial printing|red|green|black|blue|white|text*|
-|str      | str(set)       |1/0|1/0  |1/0  |1/0 |1/0  | str |
-
-Set Table:
-|set|date|
-
-text* may be expanded to an occurence (bag of words) vector.
-
-- Remove all card printings beyond the first from dataset
-- Remove all hint text from cards, usually contained in ()
+- FIX TEXTLESS CARDS
+- currently produce weird "nan" results in dataset, replace with either an {empty} indicator or appropriate
+empty string.
+- Fix capitalisation in input strings (dataset), means rebuilding dataset
+- allow apostrophe in word tokens
 
 
 #Next Steps
@@ -70,7 +63,15 @@ text* may be expanded to an occurence (bag of words) vector.
     to change if it does become an issue.
 
 
-
+- SYMBOL KEY (case insensitive):
+    {q} : untap
+    {t} : tap
+    {r,g,b,w,u,r/b,r/g etc.} : mana colours
+    {x} : x costs
+    {0-9} : colours costs
+    {s} : snow costs
+    {r/p,p} : phyrexian costs
+    {e} : energy
 
 
 

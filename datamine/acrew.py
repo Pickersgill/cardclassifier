@@ -21,7 +21,7 @@ with open("./SetList.json") as set_data:
     sorted_dated = [dated[x] for x in date_list]
 
 INVALID_SETS = ["PCEL", "PRM"]
-FORBIDDEN_SETS = ["UST", "UNH", "UGL", "UND", "AFR", "PCEL"]
+FORBIDDEN_SETS = ["UST", "UNH", "UGL", "UND", "AFR", "PCEL", "HHO"]
 
 def has_forb_set(c):
     ps = c["printings"]
@@ -72,12 +72,15 @@ for key in keys:
                 black = "B" in colours
                 white = "W" in colours
                 blue = "U" in colours
-                text = "" if "text" not in d.keys() else d["text"]
+                text = "{EMPTY}" if "text" not in d.keys() else d["text"]
+                text = re.sub(r" \({Q} is the untap symbol.\)", "", text).lower()
+                if "{q}" in text:
+                    print(text)
         
                 #print("Name: %s\nFirst Printing: %s\nR: %s\nG: %s\nB: %s\nW: %s\nU: %s" % \
                 #    (name, printing[1], red, green, black, white, blue))
                 rows.append({
-                    "name" : name,
+                    "name" : name.lower(),
                     "printed" : printing[1],
                     "r" : int(red),
                     "g" : int(green),
