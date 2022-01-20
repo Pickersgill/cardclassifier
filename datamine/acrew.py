@@ -77,8 +77,6 @@ for key in keys:
                 if "{q}" in text:
                     print(text)
         
-                #print("Name: %s\nFirst Printing: %s\nR: %s\nG: %s\nB: %s\nW: %s\nU: %s" % \
-                #    (name, printing[1], red, green, black, white, blue))
                 rows.append({
                     "name" : name.lower(),
                     "printed" : printing[1],
@@ -87,12 +85,14 @@ for key in keys:
                     "b" : int(black),
                     "w" : int(white),
                     "u" : int(blue),
-                    "text" : text
+                    "text" : text,
+                    "subtypes" : d["subtypes"],
+                    "types" : d["types"]
                 })
             else:
                 print("Row ignored")
 
 
-dataframe = pd.DataFrame(rows, columns=["name", "printed", "r", "g", "b", "w", "u", "text"])
+dataframe = pd.DataFrame(rows, columns=["name", "printed", "r", "g", "b", "w", "u", "text", "types","subtypes"])
 dataframe.to_csv("sanitized_cards.csv", sep="|")
 

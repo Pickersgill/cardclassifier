@@ -5,9 +5,10 @@ def tokenize(card):
     name = card["name"]
     shortname = name.split(",")[0]
     text = card["text"]
-    retext = "{START}" + re.sub("%s|%s" % (name, shortname), "{THIS}", text) + "{END}"
+    retext = re.sub(r"[\(.*?\)]", "", text)
+    retext = "{START}" + re.sub("%s|%s" % (name, shortname), "{THIS}", retext) + "{END}"
 
-    matches = re.findall(r"([0-9a-zA-Z']+)|(\{[^}]+})|([,:./])", retext)
+    matches = re.findall(r"([0-9a-zA-Z'-+]+)|(\{[^}]+\})|([,:./])", retext)
     tokens = []
     for m in matches:
         tokens.append("".join(list(m)))
